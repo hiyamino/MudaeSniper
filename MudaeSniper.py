@@ -1,18 +1,15 @@
 import discord
-from discord.ext import commands
 
 
 client = discord.Client()
 
-
+#name keywords (eg. "Hitagi Senjougahara" "Hitagi" "Senjougahara")
 names = [
     "Hitagi",
  "Senjougahara",
   "Hanekawa", 
-  "Tsubasa", 
-  "Koyomi", 
-  "Araragi", 
-  "Karen", 
+  "Tsubasa", "Koyomi", 
+  "Araragi", "Karen", 
   "Tsukihi", 
   "Hachikuji", 
   "Mayoi", 
@@ -27,8 +24,7 @@ names = [
   "Oshino", 
   "Ougi", 
   "Shinobu", 
-  "Meme", 
-  "Monogatari", 
+  "Meme",
   "Testarossa",
   "Kiss-Shot Acerola-Orion Heart-Under-Blade",
   "Kaiki",
@@ -42,6 +38,12 @@ names = [
   "Cutter", 
   "Rouka", 
   "Numachi"]
+
+#Series
+names2 = [
+    "Nichijou",
+    "Monogatari"
+]
 
 @client.event
 async def on_ready():
@@ -57,5 +59,11 @@ async def on_message(message):
                     await message.add_reaction("✅")
                     print(message.embeds[0].author.name)
                     print("-------")
+            for name in names2:
+                if name in message.embeds[0].description:
+                    await message.add_reaction("✅")
+                    print(message.embeds[0].author.name)
+                    print("-------")
+                
 
-client.run("token")
+client.run("Token")
